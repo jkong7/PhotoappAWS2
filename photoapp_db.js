@@ -32,28 +32,4 @@ let photoapp_db = mysql.createConnection(
   }
 );
 
-function query_database(db, sql, params=[])
-{
-  let response = new Promise((resolve, reject) => {
-    try 
-    {
-      db.query(sql, params, (err, results, _) => {
-        if (err) {
-          reject(err);
-        }
-        else {
-          resolve(results);
-        }
-      });
-    }
-    catch (err) {
-      reject(err);
-    }
-  });
-  return response;
-}
-
-module.exports = {
-  photoapp_db,
-  query_database
-};
+module.exports = photoapp_db;
